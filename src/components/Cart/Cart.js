@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
     const cart = props.cart
-    const totalPrice = cart.reduce((totalPrice, prd) => totalPrice + prd.price, 0)
+    const totalPrice = cart.reduce((totalPrice, prd) => totalPrice + (prd.price*prd.quantity), 0)
 
     //alternative for cart.reduce and core concept of processing
 
@@ -29,11 +30,11 @@ const Cart = (props) => {
         shippingCost = 6.99
     }
 
-    const tax = (totalPrice *.02)
+    const tax = (totalPrice * .02)
     const grandTotal = (totalPrice + shippingCost + tax)
 
-    const formatNumber =num =>{
-        const precision=num.toFixed(2)
+    const formatNumber = num => {
+        const precision = num.toFixed(2)
         return Number(precision)
     }
     return (
@@ -44,6 +45,10 @@ const Cart = (props) => {
             <p><small>Shipping Cost: ${shippingCost}</small></p>
             <p><small>Tax + VAT: ${formatNumber(tax)}</small></p>
             <p>Total Price: ${formatNumber(grandTotal)}</p>
+            <br />
+            {
+                props.children
+            }
         </div>
     );
 };
