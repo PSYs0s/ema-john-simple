@@ -4,14 +4,14 @@ import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../uti
 import Cart from '../Cart/Cart';
 import ReviweItem from '../ReviweItem/ReviweItem';
 import happyImg from '../../images/giphy.gif';
+import { useHistory } from 'react-router';
 const Reviwe = () => {
     const [cart, setCart] = useState([])
     const [orderPlace, setOrderPlace] = useState(false)
+    const history=useHistory()
 
-    const handlePlaceOrder = () => {
-        setCart([])
-        setOrderPlace(true)
-        processOrder()
+    const handleProceedCheakout = () => {
+        history.push("/shipment")
     }
 
     const handleRemoveProduct = (productKey) => {
@@ -47,7 +47,7 @@ const Reviwe = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
-                    <button onClick={handlePlaceOrder} className="add-product-btn">Place Order</button>
+                    <button onClick={handleProceedCheakout} className="add-product-btn">Proceed Cheackout</button>
                 </Cart>
             </div>
         </div>
