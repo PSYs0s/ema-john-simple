@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 const Cart = (props) => {
     const cart = props.cart
-    const totalPrice = cart.reduce((totalPrice, prd) => totalPrice + (prd.price*prd.quantity), 0)
+    const totalPrice = cart.reduce((totalPrice, prd) => totalPrice + (prd.price*prd.quantity || 1), 0)
 
     //alternative for cart.reduce and core concept of processing
 
