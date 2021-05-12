@@ -5,7 +5,7 @@ const ProductDetail = () => {
     const{key}=useParams()
     const [product,setProduct]=useState({})
     useEffect(()=>{
-        fetch('http://localhost:5000/product/'+key)
+        fetch('https://still-oasis-42937.herokuapp.com/product/'+key)
         .then(res=>res.json())
         .then(data=>setProduct(data))
     },[key])
